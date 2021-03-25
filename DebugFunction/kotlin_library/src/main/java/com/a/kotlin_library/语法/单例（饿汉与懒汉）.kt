@@ -4,7 +4,7 @@ class LazySingleton private constructor() {
     val data = 34
 
     companion object {
-        val instance: LazySingleton by lazy { LazySingleton() }
+        val instance: LazySingleton by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { LazySingleton() }
     }
 }
 

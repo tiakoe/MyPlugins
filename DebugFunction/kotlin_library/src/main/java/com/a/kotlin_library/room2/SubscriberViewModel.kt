@@ -18,7 +18,6 @@ class SubscriberViewModel(private val repository: SubscriberRepository) : ViewMo
     private var isUpdateOrDelete = false
     private lateinit var subscriberToUpdateOrDelete: Subscriber
 
-
     @Bindable
     val inputName = MutableLiveData<String>()
 

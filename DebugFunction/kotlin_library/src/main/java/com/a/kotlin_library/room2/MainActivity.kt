@@ -9,13 +9,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.a.kotlin_library.R
-import com.a.kotlin_library.databinding.ActivityMain2Binding
 import com.a.kotlin_library.room2.db.Subscriber
 import com.a.kotlin_library.room2.db.SubscriberDatabase
 import com.a.kotlin_library.room2.db.SubscriberRepository
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMain2Binding
+    private lateinit var binding: com.a.kotlin_library.databinding.ActivityMain2Binding
     private lateinit var subscriberViewModel: SubscriberViewModel
     private lateinit var adapter: MyRecyclerViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {

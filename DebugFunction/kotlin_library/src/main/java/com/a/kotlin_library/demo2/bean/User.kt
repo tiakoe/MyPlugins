@@ -1,0 +1,22 @@
+package com.a.kotlin_library.demo2.bean
+
+import android.annotation.SuppressLint
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@SuppressLint("ParcelCreator")
+@Parcelize
+data class User(var admin: Boolean = false,
+                var chapterTops: List<String> = listOf(),
+                var collectIds: MutableList<String> = mutableListOf(),
+                var email: String = "",
+                var icon: String = "",
+                var id: String = "",
+                var nickname: String = "",
+                var password: String = "",
+                var token: String = "",
+                var type: Int = 0,
+                var username: String = "") : Parcelable
+
+
+data class Response<out T>(val errorCode: Int, val errorMsg: String, val data: T)

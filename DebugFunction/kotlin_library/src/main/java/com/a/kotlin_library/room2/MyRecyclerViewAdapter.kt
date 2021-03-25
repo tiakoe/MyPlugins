@@ -1,6 +1,5 @@
 package com.a.kotlin_library.room2
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -8,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.a.kotlin_library.R
 import com.a.kotlin_library.databinding.ListItemBinding
 import com.a.kotlin_library.room2.db.Subscriber
+
 
 class MyRecyclerViewAdapter(private val clickListener: (Subscriber) -> Unit)
     : RecyclerView.Adapter<MyViewHolder>() {
@@ -31,7 +31,6 @@ class MyRecyclerViewAdapter(private val clickListener: (Subscriber) -> Unit)
     fun setList(subscribers: List<Subscriber>) {
         subscribersList.clear()
         subscribersList.addAll(subscribers)
-
     }
 
 }

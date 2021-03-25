@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <!--        <import type="android.view.View" />-->
+
+        <variable
+            name="vm"
+            type="com.a.kotlin_library.demo2.fragment.login.LoginViewModel" />
+
+        <variable
+            name="listener"
+            type="com.a.kotlin_library.demo2.fragment.login.LoginFragment.Listener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginRight="18dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="48dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:contentDescription="TODO" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="48dp"
+                    android:background="@drawable/edit_shape"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="账号"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:maxLength="20"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:text="@{vm.username}"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:importantForAutofill="no" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="6dp"
+                        android:onClick="@{()->listener.clear()}"
+                        android:src="@drawable/ic_clear"
+                        android:visibility="@{vm.clearVisible}"
+                        android:contentDescription="TODO" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/edit_shape"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="密码"
+                        android:inputType="textPassword"
+                        android:lines="1"
+                        android:paddingLeft="12dp"
+                        android:paddingRight="12dp"
+                        android:text="@{vm.password}"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        bind:showPwd="@{vm.isShowPwd}" />
+
+                    <CheckBox
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginEnd="6dp"
+                        android:button="@drawable/key_visible_icon"
+                        android:checked="false"
+                        android:visibility="@{vm.passwordVisible}"
+                        bind:checkChange="@{listener.onCheckedChangeListener}" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/loginSub"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/button_shape"
+                    android:gravity="center"
+                    android:text="登录"
+                    bind:noRepeatClick="@{()-> listener.login()}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/loginGoregister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="12dp"
+                    android:onClick="@{()-> listener.goRegister()}"
+                    android:paddingStart="18dp"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="18dp"
+                    android:text="去注册"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
