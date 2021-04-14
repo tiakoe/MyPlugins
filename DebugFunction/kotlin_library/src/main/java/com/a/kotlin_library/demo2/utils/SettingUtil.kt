@@ -14,14 +14,14 @@ import android.widget.ProgressBar
 import androidx.core.content.ContextCompat
 import com.a.kotlin_library.R
 import com.a.kotlin_library.demo2.loadCallBack.LoadingCallback
-import com.a.kotlin_library.demo2.provider.Ktx
+import com.a.kotlin_library.demo2.provider.KtProvider
 import com.blankj.utilcode.util.Utils
 import com.kingja.loadsir.core.LoadService
 import com.tencent.mmkv.MMKV
 import java.lang.reflect.InvocationTargetException
 import kotlin.math.roundToInt
 
-val appContext: Application by lazy { Ktx.app }
+val appContext: Application by lazy { KtProvider.app }
 
 
 object SettingUtil {

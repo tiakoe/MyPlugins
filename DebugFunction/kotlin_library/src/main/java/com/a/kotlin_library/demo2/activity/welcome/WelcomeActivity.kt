@@ -4,85 +4,94 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.a.kotlin_library.R
-import com.a.kotlin_library.databinding.ActivityWelcomeBinding
-import com.a.kotlin_library.demo2.activity.MainActivity
+import com.a.kotlin_library.demo2.activity.HomeActivity
 import com.a.kotlin_library.demo2.activity.base.BaseActivity
 import com.a.kotlin_library.demo2.utils.MmkvUtil
+import com.a.kotlin_library.demo2.utils.gone
+import com.a.kotlin_library.demo2.utils.visible
 import com.a.kotlin_library.demo2.view_model.WelcomeViewModel
 import com.a.kotlin_library.demo2.widget.banner.WelcomeBannerViewHolder
 import com.zhpan.bannerview.BannerViewPager
 import kotlinx.android.synthetic.main.activity_welcome.*
 import kotlinx.android.synthetic.main.activity_welcome.view.*
-import java.lang.reflect.ParameterizedType
 
 
-@Suppress("DEPRECATED_IDENTITY_EQUALS")
-class WelcomeActivity : BaseActivity<ActivityWelcomeBinding, WelcomeViewModel>() {
+class WelcomeActivity : BaseActivity<com.a.kotlin_library.databinding.ActivityWelcomeBinding, WelcomeViewModel>() {
     private val TAG = "WelcomeActivity"
     private var pageTip = arrayOf("One Page", "Two Page", "Three Page")
     private lateinit var mViewPager: BannerViewPager<String, WelcomeBannerViewHolder>
     override fun layoutId() = R.layout.activity_welcome
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(getVmClazz(this))
-        initView()
+    override fun beforeInit(savedInstanceState: Bundle?) {
+        actionBar?.hide()
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or View.SYSTEM_UI_FLAG_FULLSCREEN)
     }
 
-    @Suppress("UNCHECKED_CAST")
-    fun <VM> getVmClazz(obj: Any): VM {
-        Log.d(TAG, "getVmClazz(WelcomeActivity.kt:38)--->>" + (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0].typeName)
-        Log.d(TAG, "getVmClazz(WelcomeActivity.kt:40)--->>" + (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1].typeName)
-        return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[1] as VM
+    override fun bindViewModel() {
+        binding.listener = Listener()
     }
 
-
-    inner class Listener {
-        fun navToMain() {
-            MmkvUtil.setFirst(false)
-            toMainPage()
-        }
-
-    }
-
-    fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         if (intent.flags and Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT !== 0) {
             finish()
             return
         }
-//        welcome_base_view.setBackgroundColor(Color.parseColor("#f34649"))
-        if (MmkvUtil.isFirst()) {
+        var first: Boolean = MmkvUtil.isFirst()
+        first = true
+        if (first) {
             mViewPager = findViewById(R.id.banner_view)
             mViewPager.apply {
                 adapter = WelcomeBannerAdapter()
                 setLifecycleRegistry(lifecycle)
-                create(pageTip.toList())
                 registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                     override fun onPageSelected(position: Int) {
                         super.onPageSelected(position)
-                        if (position == pageTip.size - 1) {
-                            welcomeEnter?.visibility = View.VISIBLE
-                        } else {
-                            welcomeEnter?.visibility = View.GONE
-                        }
+                        updateEnterVisible(position)
                     }
-                })
+
+                    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                        super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                        updateEnterVisible(position)
+                    }
+                }).create(pageTip.toList())
             }
         } else {
-            welcome_image.visibility = View.VISIBLE
+            welcome_image.visible()
             mViewPager.postDelayed({
                 toMainPage()
             }, 300)
         }
     }
 
+    inner class Listener {
+        fun navToMain() {
+            Log.d(TAG, "navToMain(Listener.kt:77)--->>")
+            MmkvUtil.setFirst(false)
+            toMainPage()
+        }
+    }
+
+    private fun updateEnterVisible(position: Int) {
+        if (position == pageTip.size - 1) {
+            welcomeEnter?.visible()
+        } else {
+            welcomeEnter?.gone()
+        }
+    }
+
     private fun toMainPage() {
-        startActivity(Intent(this@WelcomeActivity, MainActivity::class.java))
+        Log.d(TAG, "toMainPage(WelcomeActivity.kt:73)--->>")
+        startActivity(Intent(this@WelcomeActivity, HomeActivity::class.java))
         finish()
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
+
+    override fun observe() {
+
+    }
+
 
 }

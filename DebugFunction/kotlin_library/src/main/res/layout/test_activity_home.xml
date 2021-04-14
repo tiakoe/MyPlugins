@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.a.kotlin_library.demo2.activity.other2.test5.CustomRefreshLinerLayout
+            android:id="@+id/customRefreshLinerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorGray"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/topTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorGrey"
+                android:gravity="center"
+                android:padding="18dp"
+                android:text="正在刷新，马上回来" />
+            <!--            <SwipeRefreshLayout>-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/test_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--            </SwipeRefreshLayout>-->
+            <TextView
+                android:id="@+id/bottomTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/colorGrey"
+                android:gravity="center"
+                android:padding="18dp"
+                android:text="正在加载，马上回来" />
+
+        </com.a.kotlin_library.demo2.activity.other2.test5.CustomRefreshLinerLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addItem"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/circle_shape"
+            android:src="@drawable/ic_baseline_add_24"
+            app:maxImageSize="50dp"
+            android:contentDescription="TODO" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

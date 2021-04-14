@@ -1,5 +1,6 @@
 package com.a.kotlin_library.demo2.fragment.register
 
+import android.os.Bundle
 import android.widget.CompoundButton
 import com.a.kotlin_library.R
 import com.a.kotlin_library.databinding.FragmentRegisterBinding
@@ -17,7 +18,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding, RegisterViewModel
 
     override fun layoutId(): Int = R.layout.fragment_register
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         binding.vm = viewModel
     }
 

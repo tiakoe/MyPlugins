@@ -15,16 +15,16 @@ import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
 
-    lateinit var mActivity: AppCompatActivity
+    lateinit var context: AppCompatActivity
     lateinit var viewModel: VM
     lateinit var binding: DB
 
     abstract fun layoutId(): Int
-    abstract fun initView()
+    abstract fun initView(savedInstanceState: Bundle?)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mActivity = context as AppCompatActivity
+        this.context = context as AppCompatActivity
     }
 
 
@@ -37,7 +37,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(getVmClazz(this))
-        initView()
+        initView(savedInstanceState)
     }
 
     @Suppress("UNCHECKED_CAST")

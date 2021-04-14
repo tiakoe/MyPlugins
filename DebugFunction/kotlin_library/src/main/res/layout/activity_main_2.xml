@@ -6,7 +6,7 @@
 
         <variable
             name="myViewModel"
-            type="com.a.kotlin_library.room2.SubscriberViewModel" />
+            type="com.a.kotlin_library.room.SubscriberViewModel" />
     </data>
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:layout_margin="15dp"
         android:orientation="vertical"
-        tools:context=".room2.MainActivity">
+        tools:context=".room.MainActivity">
 
         <EditText
             android:id="@+id/name_text"

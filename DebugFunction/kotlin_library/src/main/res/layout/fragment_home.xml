@@ -4,24 +4,37 @@
 
     <data>
 
+        <variable
+            name="count"
+            type="com.a.kotlin_library.demo2.fragment.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:textSize="20sp"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            android:textColor="@color/black" />
+            <com.a.kotlin_library.demo2.layout.RefreshLinerLayout
+                android:id="@+id/refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/refresh_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbarSize="5dp"
+                    android:scrollbarThumbVertical="@color/colorGrey"
+                    android:scrollbars="vertical"
+                    android:overScrollMode="never" />
+
+            </com.a.kotlin_library.demo2.layout.RefreshLinerLayout>
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

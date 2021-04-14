@@ -1,15 +1,18 @@
 package com.a.kotlin_library.demo2.fragment
 
+import android.os.Bundle
+import android.util.Log
 import com.a.kotlin_library.R
 import com.a.kotlin_library.databinding.FragmentMainBinding
 import com.a.kotlin_library.demo2.fragment.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseFragment<FragmentMainBinding, FragmentMainViewModel>() {
-
+    private val TAG = "MainFragment"
     override fun layoutId() = R.layout.fragment_main
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
+        Log.d(TAG, "initView(MainFragment.kt:13)--->>")
         mainViewpager.initMain(this)
         mainBottom.init { it ->
             when (it) {

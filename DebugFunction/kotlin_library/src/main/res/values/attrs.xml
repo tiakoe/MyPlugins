@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleView">
+        <attr name="circleRadius" format="dimension" />
+        <attr name="circleColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomRefreshLinerLayout">
+        <attr name="refreshTriggerHeight" format="dimension" />
+        <attr name="loadTriggerHeight" format="dimension" />
+        <attr name="animTime" format="integer" />
+    </declare-styleable>
+
+</resources>

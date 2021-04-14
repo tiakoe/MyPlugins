@@ -12,10 +12,8 @@ import android.view.View;
 
 public class LoadingView extends View {
 
-    //圆形的半径
     int radius;
 
-    //圆形外部矩形rect的起点
     int left = 10, top = 30;
 
 

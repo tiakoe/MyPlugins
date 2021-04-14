@@ -7,7 +7,7 @@ import android.database.Cursor
 import android.net.Uri
 
 
-class Ktx : ContentProvider() {
+class KtProvider : ContentProvider() {
 
     companion object {
         lateinit var app: Application

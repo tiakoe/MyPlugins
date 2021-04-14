@@ -25,19 +25,50 @@
         <!--            </intent-filter>-->
         <!--        </activity>-->
         <!--        <activity android:name=".demo1.MainActivity" />-->
-        <activity android:name=".demo2.activity.MainActivity">
+        <activity
+            android:name=".demo2.activity.other2.TestHomeMain"
+            android:theme="@style/FullscreenThem">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--        <activity android:name=".demo2.activity.other.HomeChildActivity2" />-->
+        <activity
+            android:name=".demo2.activity.welcome.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenThem">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".demo2.activity.HomeActivity" />
+        <activity android:name=".demo2.activity.other2.TestHomeChildActivity" />
+        <activity android:name=".demo2.activity.other2.test2.RecyclerViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".demo2.activity.other2.test3.Test3Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".demo2.activity.other2.test4.Test4MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".demo2.activity.HomeChildActivity" />
-        <activity android:name=".demo2.activity.welcome.WelcomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <provider
+            android:authorities="${applicationId}.KtxInstaller"
+            android:name="com.a.kotlin_library.demo2.provider.KtProvider"
+            android:exported="false" />
     </application>
+
+
 </manifest>

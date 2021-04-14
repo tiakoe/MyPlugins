@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDex
 import cat.ereza.customactivityoncrash.config.CaocConfig
-import com.a.kotlin_library.demo2.activity.ErrorActivity
 import com.a.kotlin_library.demo2.activity.welcome.WelcomeActivity
 import com.a.kotlin_library.demo2.base.lifecycle.MyActivityLifecycleCallbacks
 import com.a.kotlin_library.demo2.base.lifecycle.MyActivityManager

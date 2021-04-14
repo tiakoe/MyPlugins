@@ -1,6 +1,7 @@
 package com.a.kotlin_library.demo2.fragment.login
 
 import android.app.Activity
+import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.CompoundButton
 import com.a.kotlin_library.R
@@ -20,7 +21,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding, LoginViewModel>() {
 
     override fun layoutId(): Int = R.layout.fragment_login
 
-    override fun initView() {
+    override fun initView(savedInstanceState: Bundle?) {
         viewModel.loginResult.observe(viewLifecycleOwner, {
             if (it.errorCode == 0) {
                 MmkvUtil.saveUser(it.data)
