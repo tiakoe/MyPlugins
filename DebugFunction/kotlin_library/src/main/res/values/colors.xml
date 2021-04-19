@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#51d8c7</color>
+    <color name="colorPrimaryDark">#51d8c7</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorLightBlue">#A3CEDC</color>
     <color name="colorWhite">#FFFFFF</color>
@@ -19,6 +19,12 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
     <color name="colorGray">#B7B6B6</color>
-
     <color name="windowBackground">#F5F5F5</color>
+    <color name="appbar">#87C6F8</color>
+    <color name="backRecycleView">#E6E4E4</color>
+
+    <color name="background">#d8d8d8</color>
+
+    <!--半透明-->
+    <color name="translucent">#28F7F4F4</color>
 </resources>

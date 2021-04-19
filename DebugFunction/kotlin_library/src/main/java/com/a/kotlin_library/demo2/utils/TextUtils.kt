@@ -1,6 +1,7 @@
 package com.a.kotlin_library.demo2.utils
 
 import androidx.databinding.ObservableField
+import com.google.gson.Gson
 
 
 open class StringObservableField(value: String = "") : ObservableField<String>(value) {
@@ -17,4 +18,11 @@ class BooleanObservableField(value: Boolean = false) : ObservableField<Boolean>(
     override fun set(value: Boolean?) {
         super.set(value)
     }
+}
+
+/**
+ * 将对象转为JSON字符串
+ */
+fun Any?.toJson(): String {
+    return Gson().toJson(this)
 }

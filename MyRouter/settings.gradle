@@ -1,0 +1,6 @@
+include ':two_library'
+include ':one_library'
+include ':router_processor'
+include ':router_api'
+include ':app'
+rootProject.name = "MyRouter"

@@ -22,7 +22,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar" />
+        <include layout="@layout/include_toolbar" />
 
         <ScrollView
             android:layout_width="match_parent"

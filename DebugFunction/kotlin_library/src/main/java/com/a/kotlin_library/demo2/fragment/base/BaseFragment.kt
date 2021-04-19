@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
 
-    lateinit var context: AppCompatActivity
+    lateinit var mContext: AppCompatActivity
     lateinit var viewModel: VM
     lateinit var binding: DB
 
@@ -24,7 +24,7 @@ abstract class BaseFragment<DB : ViewDataBinding, VM : ViewModel> : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        this.context = context as AppCompatActivity
+        this.mContext = context as AppCompatActivity
     }
 
 

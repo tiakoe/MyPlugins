@@ -48,4 +48,10 @@ object MmkvUtil {
         return kv.encode("first", first)
     }
 
+
+    fun setSearchHistoryData(searchResponseStr: String) {
+        val kv = MMKV.mmkvWithID("cache")
+        kv.encode("history", searchResponseStr)
+    }
+
 }

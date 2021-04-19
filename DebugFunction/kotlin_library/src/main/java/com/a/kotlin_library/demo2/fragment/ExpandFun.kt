@@ -1,13 +1,17 @@
 package com.a.kotlin_library.demo2.fragment
 
 import android.annotation.SuppressLint
+import android.text.Html
+import android.text.Spanned
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.a.kotlin_library.R
 import com.a.kotlin_library.demo2.fragment.home.HomeFragment
 import com.a.kotlin_library.demo2.fragment.my.MyFragment
 import com.a.kotlin_library.demo2.fragment.project.ProjectFragment
@@ -163,20 +167,28 @@ fun ViewPager2.init(
 //}
 //
 //
-///**
-// * 初始化有返回键的toolbar
-// */
-//fun Toolbar.initClose(
-//        titleStr: String = "",
-//        backImg: Int = R.drawable.ic_back,
-//        onBack: (toolbar: Toolbar) -> Unit
-//): Toolbar {
-//    setBackgroundColor(SettingUtil.getColor(appContext))
-//    title = titleStr.toHtml()
-//    setNavigationIcon(backImg)
-//    setNavigationOnClickListener { onBack.invoke(this) }
-//    return this
-//}
+
+fun Toolbar.init(titleStr: String = ""): Toolbar {
+    setBackgroundColor(SettingUtil.getColor(appContext))
+    title = titleStr
+    return this
+}
+
+fun Toolbar.initClose(
+        titleStr: String = "",
+        backImg: Int = R.drawable.ic_back,
+        onBack: (toolbar: Toolbar) -> Unit
+): Toolbar {
+    setBackgroundColor(SettingUtil.getColor(appContext))
+    title = titleStr.toHtml()
+    setNavigationIcon(backImg)
+    setNavigationOnClickListener { onBack.invoke(this) }
+    return this
+}
+
+fun String.toHtml(flag: Int = Html.FROM_HTML_MODE_COMPACT): Spanned {
+    return Html.fromHtml(this, flag)
+}
 
 
 //fun LoadService<*>.setErrorText(message: String) {

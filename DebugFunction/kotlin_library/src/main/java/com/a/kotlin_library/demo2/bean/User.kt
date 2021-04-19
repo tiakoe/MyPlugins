@@ -19,4 +19,4 @@ data class User(var admin: Boolean = false,
                 var username: String = "") : Parcelable
 
 
-data class Response<out T>(val errorCode: Int, val errorMsg: String, val data: T)
+

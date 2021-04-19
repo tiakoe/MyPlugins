@@ -1,5 +1,6 @@
 package com.a.kotlin_library.demo2.activity.base
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,6 +13,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : AppCompatAct
 
     lateinit var binding: DB
     lateinit var viewModel: VM
+    lateinit var mActivity: Activity
 
     abstract fun layoutId(): Int
     abstract fun beforeInit(savedInstanceState: Bundle?)
@@ -21,6 +23,7 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : ViewModel> : AppCompatAct
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mActivity = this
         beforeInit(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId())
         viewModel = ViewModelProvider(this).get(getVmClazz(this))

@@ -1,5 +1,6 @@
 package com.a.kotlin_library.demo2.fragment.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,15 +11,16 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.a.kotlin_library.R
-import com.a.kotlin_library.demo2.activity.other2.TestHomeChildActivity
+import com.a.kotlin_library.demo2.activity.other2.HomeChildActivity
 import com.a.kotlin_library.room.table.HomeTable
-import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_home_item_view.view.*
 
 
 class HomeFragmentAdapter internal constructor(
         private val context: Context
 ) : RecyclerView.Adapter<HomeFragmentAdapter.ItemViewHolder>() {
+
+    var list = ArrayList<HomeTable>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -27,13 +29,23 @@ class HomeFragmentAdapter internal constructor(
     }
 
 
-    fun updateDataAsync(data: List<HomeTable>) {
-        asyncListDiffer.submitList(data)
+    fun updateDataAsync(data: List<HomeTable>, isClear: Boolean = false) {
+//        asyncListDiffer.submitList(data)
+        if (isClear) {
+            list.clear()
+        }
+        val pos = list.size
+        list.addAll(data)
+        if (!isClear) {
+            notifyItemInserted(pos - 1)
+        } else {
+            notifyDataSetChanged()
+        }
     }
 
-
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.bind(context, asyncListDiffer.currentList[position], position)
+        holder.bind(context, list[position], position)
+//        holder.bind(context, asyncListDiffer.currentList[position], position)
     }
 
 
@@ -49,21 +61,26 @@ class HomeFragmentAdapter internal constructor(
 
     private val asyncListDiffer = AsyncListDiffer(this, itemCallback)
 
-
     inner class ItemViewHolder constructor(view: View) : RecyclerView.ViewHolder(view) {
+        @SuppressLint("SetTextI18n")
         fun bind(context: Context, homeTable: HomeTable, position: Int) {
-            Glide.with(context)
-                    .load(homeTable.envelopePic)
-                    .error(R.drawable.ic_baseline_error_24)
-                    .into(itemView.image1)
 
             itemView.index.text = position.toString()
-            itemView.title1.text = homeTable.title
-            itemView.overview1.text = homeTable.desc
+            itemView.title.text = homeTable.title
 
-            val intent = Intent(context, TestHomeChildActivity::class.java)
+            if (homeTable.author != "") {
+                itemView.author.text = homeTable.author
+            } else {
+                itemView.author.text = "wan"
+            }
+            itemView.niceDate.text = homeTable.niceDate
+            itemView.superChapterName.text = homeTable.superChapterName
+            itemView.chapterName.text = ">" + homeTable.chapterName
+
+            val intent = Intent(context, HomeChildActivity::class.java)
             val bundle = Bundle()
-            bundle.putParcelable("homeTable", homeTable)
+            bundle.putString("url", homeTable.link)
+            bundle.putString("title", homeTable.title)
             intent.putExtras(bundle)
             itemView.setOnClickListener {
                 context.startActivity(intent)
@@ -80,7 +97,8 @@ class HomeFragmentAdapter internal constructor(
     }
 
     override fun getItemCount(): Int {
-        return asyncListDiffer.currentList.size
+        return list.size
+//        return asyncListDiffer.currentList.size
     }
 
 

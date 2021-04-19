@@ -1,9 +1,11 @@
 package com.a.kotlin_library.demo2.retrofit
 
+import com.a.kotlin_library.demo2.bean.ArticleResponse
+import com.a.kotlin_library.demo2.bean.PagerResponse
 import com.a.kotlin_library.demo2.bean.Response
 import com.a.kotlin_library.demo2.bean.User
+import com.a.kotlin_library.demo2.bean.home.BannerData
 import com.a.kotlin_library.demo2.bean.home.HomeData
-import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -40,22 +42,31 @@ interface ApiService {
     }
 
 
-    //    https://www.wanandroid.com/article/list/0/json
-    @GET("/article/list/{page}/json")
-    fun getAllDatas(@Path("page") page: Int): Observable<HomeData>
+    //    https://www.wanandroid.com/banner/json
+    @GET("/banner/json")
+    suspend fun getHomeBanner(): BannerData
 
 
     @GET("/article/list/{page}/json")
     suspend fun getHomeArticles(@Path("page") page: Int): HomeData
 
 
+    /**
+     * 根据关键词搜索数据
+     */
+    @POST("/article/query/{page}/json")
+    suspend fun getSearchDataByKey(
+            @Path("page") pageNo: Int,
+            @Query("k") searchKey: String
+    ): Response<PagerResponse<ArticleResponse>>
+
     @FormUrlEncoded
-    @POST("user/login")
+    @POST("/user/login")
     suspend fun loginAsync(@Field("username") username: String,
                            @Field("password") pwd: String): Response<User>
 
     @FormUrlEncoded
-    @POST("user/register")
+    @POST("/user/register")
     suspend fun registerAsync(
             @Field("username") username: String, @Field("password") pwd: String, @Field("repassword") rpwd: String
     ): Response<Any>

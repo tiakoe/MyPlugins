@@ -13,10 +13,8 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.a.kotlin_library.R
-import com.a.kotlin_library.demo2.activity.other2.TestHomeChildActivity
+import com.a.kotlin_library.demo2.activity.other2.HomeChildActivity
 import com.a.kotlin_library.room.table.HomeTable
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_home_item_view.view.*
 import java.util.concurrent.LinkedBlockingDeque
 import kotlin.concurrent.thread
 
@@ -132,15 +130,15 @@ class TestAdapter internal constructor(
     class PartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(context: Context, homeTable: HomeTable) {
 
-            Glide.with(context)
-                    .load(homeTable.envelopePic)
-                    .error(R.drawable.ic_baseline_error_24)
-                    .into(itemView.image1)
+//            Glide.with(context)
+//                    .load(homeTable.envelopePic)
+//                    .error(R.drawable.ic_baseline_error_24)
+//                    .into(itemView.image1)
+//
+//            itemView.title1.text = homeTable.title
+//            itemView.overview1.text = homeTable.desc
 
-            itemView.title1.text = homeTable.title
-            itemView.overview1.text = homeTable.desc
-
-            val intent = Intent(context, TestHomeChildActivity::class.java)
+            val intent = Intent(context, HomeChildActivity::class.java)
             val bundle = Bundle()
             bundle.putParcelable("homeTable", homeTable)
             intent.putExtras(bundle)

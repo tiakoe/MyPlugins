@@ -4,25 +4,29 @@
 
     <data>
 
-        <variable
-            name="dataChild"
-            type="com.a.kotlin_library.demo2.view_model.ChildViewModel" />
+        <!--        <variable-->
+        <!--            name="dataChild"-->
+        <!--            type="com.a.kotlin_library.demo2.view_model.ChildViewModel" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{dataChild.homeTable.toString()}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@{dataChild.homeTable.toString()}"-->
+        <!--            app:layout_constraintTop_toTopOf="parent"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent" />-->
 
         <WebView
             android:id="@+id/webView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

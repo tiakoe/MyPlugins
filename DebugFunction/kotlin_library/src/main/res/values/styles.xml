@@ -33,4 +33,18 @@
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
     </style>
 
+
+    <style name="AppBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimary">@color/colorTextHint</item>
+        <item name="colorPrimaryDark">@color/colorTextHint</item>
+        <item name="colorAccent">@color/colorTextHint</item>
+        <item name="android:windowBackground">@color/colorTextHint</item>
+        <!--   水滴屏等适配展示-->
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
 </resources>

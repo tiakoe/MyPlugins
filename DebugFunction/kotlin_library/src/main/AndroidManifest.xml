@@ -43,8 +43,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".demo2.activity.HomeActivity" />
-        <activity android:name=".demo2.activity.other2.TestHomeChildActivity" />
+        <activity
+            android:name=".demo2.activity.HomeActivity"
+            android:theme="@style/Theme.Design.NoActionBar" />
+        <activity
+            android:name=".demo2.activity.other2.HomeChildActivity"
+            android:theme="@style/Theme.Design.NoActionBar" />
         <activity android:name=".demo2.activity.other2.test2.RecyclerViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

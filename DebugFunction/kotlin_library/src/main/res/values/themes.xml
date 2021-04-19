@@ -11,6 +11,7 @@
     <style name="Theme.MyTemp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/appbar</item>
     </style>
 
     <style name="Theme.MyTemp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
